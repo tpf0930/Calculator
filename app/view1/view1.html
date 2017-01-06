@@ -1,0 +1,98 @@
+<div id="mainContent1" class="container">
+    <h3 id="mainContent1Title" class="text-center header">Caclulate how much your monthly payments could be?</h3>
+
+    <div class="row">
+        <form class="form" role="form" name="calForm" novalidate>
+            <div class="col-md-6 col-sm-12 calculation-left">
+                <div class="row form-item">
+                    <div class="form-group">
+                        <label for="principal" class="col-xs-6 control-label" aria-label="Amount to borrow">Amount to
+                            borrow: </label>
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input id="principal" type="number" autocomplete="off" ng-model="calc.principal"
+                                       name="principal" ng-pattern="/^[0-9]+(\.[0-9]*)?$/"
+                                       class="form-control text-center input-sm" required/>
+                            </div>
+                        </div>
+                        <div role="alert" class="col-xs-offset-8 col-xs-4">
+                            <div ng-if="calForm.$submitted || calForm.principal.$touched" class="has-error">
+                                <label class="control-label" ng-if="calForm.principal.$error.required"
+                                       aria-invalid="true">
+                                    Please input a value for amount!</label>
+                                <label class="control-label" ng-if="calForm.principal.$error.number"
+                                       aria-invalid="true">
+                                    Not valid number!</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 decorate-bottom-line"></div>
+                    </div>
+                </div>
+                <div class="row form-item">
+                    <div class="form-group">
+                        <label for="interestRate" class="col-xs-6 control-label">Interest rate: </label>
+                        <div class="col-xs-offset-2 col-xs-4">
+                            <div class="input-group">
+                                <input id="interestRate" type="number" autocomplete="off" ng-model="calc.interestRate"
+                                       name="interestRate"
+                                       ng-pattern="/^[0-9]+(\.[0-9]*)?$/"
+                                       class="form-control text-center input-sm" required>
+                                <div class="input-group-addon">%</div>
+                            </div>
+                        </div>
+                        <div role="alert" class="col-xs-offset-8 col-xs-4">
+                            <div ng-if="calForm.$submitted || calForm.interestRate.$touched" class="has-error">
+                                <label class="control-label" ng-if="calForm.interestRate.$error.required"
+                                       aria-invalid="true">
+                                    Please input a value for interest rate</label>
+                                <label class="control-label" ng-if="calForm.interestRate.$error.number"
+                                       aria-invalid="true">
+                                    Not valid number!</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 decorate-bottom-line"></div>
+                    </div>
+                </div>
+                <div class="row form-item">
+                    <div class="form-group">
+                        <label for="months" class="col-xs-6 control-label">Pay it off in: </label>
+                        <div class="col-xs-offset-4 col-xs-2">
+                            <div class="input-group">
+                                <input id="months" type="number" autocomplete="off" ng-model="slider.value" min="6"
+                                       max="72" name="months"
+                                       class="form-control text-center input-sm" required>
+                            </div>
+                        </div>
+                        <div role="alert" class="col-xs-offset-8 col-xs-4">
+                            <div ng-if="calForm.$submitted || calForm.months.$touched" class="has-error">
+                                <label class="control-label" ng-if="calForm.months.$error.required" aria-invalid="true">
+                                    Please input a value between 6 and 72!</label>
+                                <label class="control-label" ng-if="calForm.months.$error.number" aria-invalid="true">
+                                    Not valid number!</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 decorate-bottom-line"></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <rzslider
+                            rz-slider-model="slider.value"
+                            rz-slider-options="slider.options">
+                    </rzslider>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 text-center">
+                <div class="futureValue ng-binding" id="monthlyPayments">Based on what you entered, you monthly payment
+                    could be:
+                </div>
+                <h2 class="result">${{monthlyPayments | number:2}}</h2>
+                <div id="buttonDiv">
+                    <input type="submit" id="formulaButton" ng-click="calculate()" class="btn btn-primary"
+                           value="Get Started"/>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

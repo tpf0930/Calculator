@@ -1,0 +1,63 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.input-group-addon
+{
+  background-color:#FFF;
+}
+
+.input-group .input-group-addon + .form-control
+{
+  border-left:none;
+}
+
+.form-item{
+  padding:0.5em;
+}
+
+.decorate-bottom-line{
+  height:0;
+  padding:1em;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-color: #e8e8e8;
+}
+
+.result{
+  color: #265a88;
+}
+.css-form input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+}
+.calculation-left{
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: #e8e8e8;
+}
+
+.header{
+  padding:2em;
+}
