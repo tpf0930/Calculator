@@ -1,13 +1,9 @@
 
 var gulp = require('gulp'),
-    webserver = require('gulp-webserver'),
     del = require('del'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    browserify = require('browserify'),
-    uglify = require('gulp-uglify'),
-    gutil = require('gulp-util'),
-    ngAnnotate = require('browserify-ngannotate');
+    uglify = require('gulp-uglify');
 
 var CacheBuster = require('gulp-cachebust');
 var cachebust = new CacheBuster();
@@ -45,7 +41,7 @@ gulp.task('bower', function() {
 /////////////////////////////////////////////////////////////////////////////////////
 
 gulp.task('build-css', ['clean'], function() {
-    return gulp.src('./styles-dep/*')
+    return gulp.src('./styles/*')
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(cachebust.resources())
